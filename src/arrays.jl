@@ -1,16 +1,19 @@
 struct ProductArray{T,N,F,A} <: AbstractArray{T,N}
     f::F
     args::A
+
+    function ProductArray(f::F, args) where {F}
+        T = Core.Compiler.return_type(f, Tuple{eltype.(args)...})
+        new{T,length(args),F,typeof(args)}(f, args)
+    end
+    function ProductArray(f::Type{F}, args) where {F}
+        T = Core.Compiler.return_type(f, Tuple{eltype.(args)...})
+        new{T,length(args),Type{T},typeof(args)}(T, args)
+    end
 end
 
 handle(a::ProductArray) = a.f
 parent(a::ProductArray) = a.args
-
-function ProductArray(f, args::Vararg{Any,N}) where {N}
-    S = Tuple{eltype.(args)...}
-    T = Core.Compiler.return_type(f, S)
-    ProductArray{T,N,typeof(f),typeof(args)}(f, args)
-end
 
 size(a::ProductArray) = length.(parent(a))
 
