@@ -23,3 +23,6 @@ getindex(a::ProductArray{T,N}, i::Vararg{Int,N}) where {T,N} =
 axes(a::ProductArray) = map(parent(a)) do el
     only(axes(el))
 end
+
+diag(a::ProductArray{T,N,typeof(tuple)}) where {T,N} =
+    ZippedArray(parent(a)...)

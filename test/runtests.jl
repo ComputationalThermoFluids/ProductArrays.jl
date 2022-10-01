@@ -1,3 +1,4 @@
+using LinearAlgebra
 using ProductArrays
 using Test
 
@@ -12,4 +13,8 @@ using Test
 
     @test isequal(pa[5, 5], CartesianIndex(5, 3))
     @test isequal(pa[5, 5], pa[CartesianIndex(5, 5)])
+
+    d = diag(pa)
+
+    @test isequal(first(d), CartesianIndex(1, -1))
 end

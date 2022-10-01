@@ -3,6 +3,10 @@ uuid = "47983261-ebc5-4293-86fb-c7fd2acc601e"
 authors = ["Vincent Le Chenadec <vincentlechenadec@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+ZippedArrays = "8051824b-fc5e-4603-89c4-0e6ea551cb88"
+
 [compat]
 julia = "1"
 
