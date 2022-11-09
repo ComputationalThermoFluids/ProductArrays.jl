@@ -3,7 +3,7 @@ module ProductArrays
 using LinearAlgebra
 using ZippedArrays
 
-import Base: parent, size, axes, getindex
+import Base: size, axes, getindex
 import LinearAlgebra: diag
 
 export ProductArray

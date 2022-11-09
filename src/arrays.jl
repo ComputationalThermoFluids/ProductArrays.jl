@@ -12,17 +12,17 @@ struct ProductArray{T,N,F,A} <: AbstractArray{T,N}
     end
 end
 
-handle(a::ProductArray) = a.f
-parent(a::ProductArray) = a.args
+operation(a::ProductArray) = a.f
+arguments(a::ProductArray) = a.args
 
-size(a::ProductArray) = length.(parent(a))
+size(a::ProductArray) = length.(arguments(a))
 
 getindex(a::ProductArray{T,N}, i::Vararg{Int,N}) where {T,N} =
-    handle(a)(getindex.(parent(a), i)...)
+    operation(a)(getindex.(arguments(a), i)...)
 
-axes(a::ProductArray) = map(parent(a)) do el
+axes(a::ProductArray) = map(arguments(a)) do el
     only(axes(el))
 end
 
 diag(a::ProductArray{T,N,typeof(tuple)}) where {T,N} =
-    ZippedArray(parent(a)...)
+    ZippedArray(arguments(a)...)
