@@ -21,7 +21,18 @@ parent(a::FlattenedProduct) = a.data
 size(a::FlattenedProduct) =
     sum.(length, arguments(parent(a)))
 
-# For debugging purposes only (very inefficient)
+"""
+    getindex(a::FlattenedProduct, i::Int...)
+
+Very **inefficient** implementation and provided for **debugging** purposes only.
+
+!!! note
+
+    In practice, elements are accessed by iterating over each element of `parent(a)`,
+    which is equivalent as long as the result is independent of the order in which
+    the elements are accessed.
+
+"""
 function getindex(a::FlattenedProduct, i::Int...)
     ranges = map(enumerate(arguments(parent(a)))) do (d, iter)
         init = firstindex(a, d)
