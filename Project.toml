@@ -1,7 +1,7 @@
 name = "ProductArrays"
 uuid = "47983261-ebc5-4293-86fb-c7fd2acc601e"
 authors = ["Vincent Le Chenadec <vincentlechenadec@gmail.com> and contributors"]
-version = "0.1.2"
+version = "0.1.3"
 
 [deps]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
