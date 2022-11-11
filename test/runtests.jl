@@ -28,7 +28,7 @@ end
           [UnitRange(0, 2), Base.OneTo(3), UnitRange(-1, 1)]
     pa = ProductArray(CartesianIndices, xyz)
 
-    @test isequal(pa[2, 2], CartesianIndices(UnitRange(-1, 5), Base.OneTo(3)))
+    @test isequal(pa[2, 2], CartesianIndices((UnitRange(-1, 5), Base.OneTo(3))))
 end
 
 @testset "FlattenedProduct" begin
