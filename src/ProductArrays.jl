@@ -11,6 +11,6 @@ export ProductArray, FlattenedProduct, Slurped
 include("array.jl")
 include("flattened.jl")
 include("slurped.jl")
-include("cartesian.jl")
+#include("cartesian.jl")
 
 end
