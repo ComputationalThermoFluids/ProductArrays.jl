@@ -51,3 +51,25 @@ end
 
     @test all(isequal.(fp, CartesianIndices((Base.OneTo(4), UnitRange(-1, 2)))))
 end
+
+@testset "CartesianPlane" begin
+    i = 3
+    n = (4, 8)
+    plane = CartesianPlane{2}(i, CartesianIndices(n))
+
+    @test (===)(size(plane), n)
+    @test (===)(first(plane), CartesianIndex(1, i, 1))
+    @test (===)(plane[i-1, i+1], CartesianIndex(i-1, i, i+1))
+    @test (===)(last(plane), CartesianIndex(n[1], i, n[2]))
+
+    i = 5
+    xyz = [Base.OneTo(10), UnitRange(-1, 5)],
+          [UnitRange(0, 2), Base.OneTo(3), UnitRange(-1, 1)]
+    pa = ProductArray(Slurped(CartesianIndices), xyz)
+    fp = FlattenedProduct(pa)
+    plane = CartesianPlane{2}(i, fp)
+
+    @test isequal(first(plane), CartesianIndex(1, i, 0))
+    @test isequal(plane[12, 7], CartesianIndex(0, i, -1))
+    @test isequal(last(plane), CartesianIndex(5, i, 1))
+end

@@ -33,7 +33,7 @@ Very **inefficient** implementation and provided for **debugging** purposes only
     the elements are accessed.
 
 """
-function getindex(a::FlattenedProduct, i::Int...)
+function getindex(a::FlattenedProduct{T,N}, i::Vararg{Int,N}) where {T,N}
     ranges = map(enumerate(arguments(parent(a)))) do (d, iter)
         init = firstindex(a, d)
         map(iter) do el
