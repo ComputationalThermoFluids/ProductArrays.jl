@@ -5,6 +5,7 @@ version = "0.1.3"
 
 [deps]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+OnlyArrays = "01ce1071-77f6-47e3-8919-4912945f4e12"
 ZippedArrays = "8051824b-fc5e-4603-89c4-0e6ea551cb88"
 
 [compat]
