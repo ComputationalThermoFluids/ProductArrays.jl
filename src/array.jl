@@ -5,6 +5,8 @@ eltypes(A::AbstractArray) = Tuple{eltype(A)}
 const OrdinalRangeInt = OrdinalRange{Int,Int}
 const TupleN{T,N} = NTuple{N,T}
 
+# Only used for Union{FlattenedCartesian,CartesianIndices}
+# Call this DecomposedCartesianIndices and include it in FlattenedArrays
 struct ProductArray{T,N,F,A<:NTuple{N,AbstractVector}} <: AbstractArray{T,N}
     f::F
     args::A

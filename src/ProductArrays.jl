@@ -7,7 +7,7 @@ using OnlyArrays
 import Base: parent, size, axes, getindex
 import LinearAlgebra: diag
 
-export ProductArray, product
+export ProductArray, arguments, product
 export CartesianPlane
 
 include("array.jl")
